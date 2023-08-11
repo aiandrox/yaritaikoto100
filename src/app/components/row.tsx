@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
 type Item = {
   value: string;
   isDone: boolean;
 };
 
 export default function Row({ number, item }: { number: number; item: Item }) {
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
   return (
     <div key={number} className="flex items-center justify-center mt-2">
       <div className="relative w-12 text-2xl font-bold text-white">
@@ -12,9 +18,9 @@ export default function Row({ number, item }: { number: number; item: Item }) {
           <div className="absolute bottom-0 right-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 text-red-500"
+              className="h-8 w-8 text-red-500"
               fill="none"
-              viewBox="0 0 24 24"
+              viewBox="5 2 15 18"
               stroke="currentColor"
             >
               <path
@@ -35,7 +41,7 @@ export default function Row({ number, item }: { number: number; item: Item }) {
           defaultValue={item.value}
         />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 cursor-pointer" onClick={() => setOpenModal(!openModal)}>
         {/* ハンバーガーSVG */}
         <svg
           className="w-8 h-8 text-white"
@@ -52,6 +58,7 @@ export default function Row({ number, item }: { number: number; item: Item }) {
           ></path>
         </svg>
       </div>
+      {openModal && <>✗</>}
     </div>
   );
 }
