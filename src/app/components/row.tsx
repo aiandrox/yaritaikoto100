@@ -41,7 +41,7 @@ export default function Row({ number, item }: { number: number; item: Item }) {
           defaultValue={item.value}
         />
       </div>
-      <div className="ml-4 cursor-pointer" onClick={() => setOpenModal(!openModal)}>
+      <div className="ml-4 cursor-pointer relative" onClick={() => setOpenModal(!openModal)}>
         {/* ハンバーガーSVG */}
         <svg
           className="w-8 h-8 text-white"
@@ -57,8 +57,15 @@ export default function Row({ number, item }: { number: number; item: Item }) {
             d="M4 6h16M4 12h16M4 18h16"
           ></path>
         </svg>
+        {openModal && (
+          <div className="absolute -right-16 top-0 z-10 w-16 bg-white shadow rounded border overflow-hidden">
+            <ul className="list-reset text-gray-900">
+              <li className="px-2 py-1 block no-underline hover:no-underline">詳細</li>
+              <li className="px-2 py-1 block no-underline hover:no-underline">削除</li>
+            </ul>
+          </div>
+        )}
       </div>
-      {openModal && <>✗</>}
     </div>
   );
 }
