@@ -11,11 +11,11 @@ export default function Row({ number, item }: { number: number; item: Item }) {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
-    <div key={number} className="flex items-center justify-center mt-2">
-      <div className="relative w-12 text-2xl font-bold text-white">
+    <div key={number} className="flex w-full items-center justify-center mt-2">
+      <div className="relative text-2xl font-bold text-white font-mono">
         {number.toString().padStart(3, "0")}
         {item.isDone && (
-          <div className="absolute bottom-0 right-0">
+          <div className="absolute -top-2 -left-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8 text-red-500"
@@ -33,10 +33,10 @@ export default function Row({ number, item }: { number: number; item: Item }) {
           </div>
         )}
       </div>
-      <div className="ml-4 text-l">
+      <div className="grow ml-4 text-l">
         <input
           type="text"
-          className="w-96 p-2 text-gray-700 rounded-md focus:outline-none"
+          className="w-full p-2 text-gray-700 rounded-md focus:outline-none"
           maxLength={22}
           defaultValue={item.value}
         />
