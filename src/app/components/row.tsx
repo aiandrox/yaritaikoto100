@@ -3,17 +3,18 @@
 import { useState } from "react";
 
 type Item = {
+  number: number;
   value: string;
   isDone: boolean;
 };
 
-export default function Row({ number, item }: { number: number; item: Item }) {
+export default function Row({ item }: { item: Item }) {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
-    <div key={number} className="flex w-full items-center justify-center mt-2">
+    <div key={item.number} className="flex w-full items-center justify-center mt-2">
       <div className="relative text-2xl font-bold text-white font-mono">
-        {number.toString().padStart(3, "0")}
+        {item.number.toString().padStart(3, "0")}
         {item.isDone && (
           <div className="absolute -top-2 -left-2">
             <svg
