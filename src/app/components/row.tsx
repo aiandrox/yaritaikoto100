@@ -2,20 +2,18 @@
 
 import { useState } from "react";
 
-type Item = {
-  number: number;
-  value: string;
-  isDone: boolean;
-};
-
-export default function Row({ item }: { item: Item }) {
+export default function Row({
+  item,
+}: {
+  item: { __typename?: "Item" | undefined; number: number; name: string; doneAt?: any };
+}) {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
     <div key={item.number} className="flex w-full items-center justify-center mt-2">
       <div className="relative text-2xl font-bold text-white font-mono">
         {item.number.toString().padStart(3, "0")}
-        {item.isDone && (
+        {item.doneAt && (
           <div className="absolute -top-2 -left-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +37,7 @@ export default function Row({ item }: { item: Item }) {
           type="text"
           className="w-full p-2 text-gray-700 rounded-md focus:outline-none"
           maxLength={22}
-          defaultValue={item.value}
+          defaultValue={item.name}
         />
       </div>
       <div className="ml-4 cursor-pointer relative" onClick={() => setOpenModal(!openModal)}>

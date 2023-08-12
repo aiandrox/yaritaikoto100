@@ -1,109 +1,9 @@
+import { useCurrentListFacade } from "./facade/currentList.facade";
 import Row from "./components/row";
 
-const items = [
-  {
-    number: 1,
-    value: "やりたいこと1",
-    isDone: false,
-  },
-  {
-    number: 2,
-    value: "やりたいこと2",
-    isDone: true,
-  },
-  {
-    number: 3,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 4,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 5,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 6,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 7,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 8,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 9,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 10,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 11,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 12,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 13,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 14,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 15,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 16,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 17,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 18,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 19,
-    value: "",
-    isDone: false,
-  },
-  {
-    number: 20,
-    value: "",
-    isDone: false,
-  },
-];
-
 export default function Home() {
+  const { currentList } = useCurrentListFacade();
+
   return (
     <>
       <main className="flex flex-col items-center" style={{ backgroundColor: "#ffa2ab" }}>
@@ -127,9 +27,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col w-full items-center justify-center">
-            {items.map((item) => (
-              <Row key={item.number} item={item} />
-            ))}
+            {currentList && currentList.items.map((item) => <Row key={item.number} item={item} />)}
           </div>
         </div>
         <div className="h-16" />
