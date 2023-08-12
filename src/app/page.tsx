@@ -1,3 +1,4 @@
+import WithApollo from "./withApollo";
 import { YaritaikotoListPage } from "./yaritaikotoList";
 
 export default function Home() {
@@ -8,7 +9,9 @@ export default function Home() {
         style={{ backgroundColor: "#ffa2ab" }}
       >
         <div className="p-2 container max-w-[500px]">
-          <YaritaikotoListPage />
+          <WithApollo>
+            <YaritaikotoListPage />
+          </WithApollo>
         </div>
         <div className="h-16" />
       </main>
