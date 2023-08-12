@@ -7,6 +7,12 @@ const config: CodegenConfig = {
   generates: {
     "src/app/__generated__/graphql.ts": {
       plugins: ["typescript", "typescript-resolvers"],
+      config: {
+        scalars: {
+          ISO8601Date: "string",
+          ISO8601DateTime: "string",
+        },
+      },
     },
     "src/app/__generated__": {
       preset: "near-operation-file",
@@ -15,6 +21,12 @@ const config: CodegenConfig = {
         baseTypesPath: "graphql.ts",
       },
       plugins: ["typescript-operations", "typescript-react-apollo"],
+      config: {
+        scalars: {
+          ISO8601Date: "string",
+          ISO8601DateTime: "string",
+        },
+      },
     },
   },
 };
