@@ -1,10 +1,27 @@
 "use client";
 
 import { useCurrentListFacade } from "./currentList.facade";
-import List from "./list.component";
+import ListComponent from "./list.component";
+import { Item, List } from "./models";
 
-export const Page = () => {
+export const PageComponent = () => {
   const { currentList } = useCurrentListFacade();
+  const list: List = currentList
+    ? {
+        uuid: currentList.uuid,
+        title: currentList.title,
+        published: currentList.published,
+      }
+    : {
+        uuid: "uuid",
+        title: "やりたいことリスト",
+        published: false,
+      };
 
-  return currentList && <List currentList={currentList} />;
+  const items: Item[] = Array.from({ length: 100 }, (_, i) => {
+    const item = currentList?.items.find((item) => item.number === i + 1);
+    return item || { number: i + 1, name: "", doneAt: null };
+  });
+
+  return <ListComponent list={list} items={items} />;
 };

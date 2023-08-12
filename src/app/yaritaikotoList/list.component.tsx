@@ -1,32 +1,16 @@
 "use client";
 
+import { Item, List } from "./models";
 import Row from "./row.component";
 
-export default function List({
-  currentList,
-}: {
-  currentList: {
-    __typename?: "List" | undefined;
-    uuid: string;
-    published: boolean;
-    items: {
-      __typename?: "Item" | undefined;
-      number: number;
-      name: string;
-      doneAt?: string | null;
-    }[];
-  };
-}) {
-  const viewItems = Array.from({ length: 100 }, (_, i) => {
-    const item = currentList?.items.find((item) => item.number === i + 1);
-    return item || { number: i + 1, name: "", doneAt: null };
-  });
-
+export default function ListComponent({ list, items }: { list: List; items: Item[] }) {
   return (
     <>
       <div className="flex items-center my-4">
         <div className="grow items-center">
-          <h1 className="text-3xl font-bold text-white content-center">やりたいことリスト</h1>
+          <h1 className="text-3xl font-bold text-white content-center">
+            {list.title || "やりたいことリスト"}
+          </h1>
         </div>
         <div className="grow-0 items-center">
           <svg
@@ -43,7 +27,9 @@ export default function List({
       </div>
 
       <div className="flex flex-col w-full items-center justify-center">
-        {currentList && viewItems.map((item) => <Row key={item.number} item={item} />)}
+        {items.map((item) => (
+          <Row key={item.number} item={item} />
+        ))}
       </div>
     </>
   );

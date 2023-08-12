@@ -6,13 +6,14 @@ const defaultOptions = {} as const;
 export type CurrentListQueryQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type CurrentListQueryQuery = { __typename?: 'Query', currentList?: { __typename?: 'List', uuid: string, published: boolean, items: Array<{ __typename?: 'Item', number: number, name: string, doneAt?: string | null }> } | null };
+export type CurrentListQueryQuery = { __typename?: 'Query', currentList?: { __typename?: 'List', uuid: string, title: string, published: boolean, items: Array<{ __typename?: 'Item', number: number, name: string, doneAt?: string | null }> } | null };
 
 
 export const CurrentListQueryDocument = gql`
     query CurrentListQuery {
   currentList {
     uuid
+    title
     published
     items {
       number

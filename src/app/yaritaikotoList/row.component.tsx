@@ -1,12 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { Item } from "./models";
 
-export default function Row({
-  item,
-}: {
-  item: { __typename?: "Item" | undefined; number: number; name: string; doneAt?: string | null };
-}) {
+export default function RowComponent({ item }: { item: Item }) {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (

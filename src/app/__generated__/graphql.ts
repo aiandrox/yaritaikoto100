@@ -69,6 +69,8 @@ export type List = {
   items: Array<Item>;
   /** 公開状態 */
   published: Scalars['Boolean']['output'];
+  /** リストタイトル */
+  title: Scalars['String']['output'];
   /** ユーザ */
   user: User;
   /** やりたいことリストID */
@@ -322,6 +324,7 @@ export type ItemResolvers<ContextType = any, ParentType extends ResolversParentT
 export type ListResolvers<ContextType = any, ParentType extends ResolversParentTypes['List'] = ResolversParentTypes['List']> = {
   items?: Resolver<Array<ResolversTypes['Item']>, ParentType, ContextType>;
   published?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   user?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
   uuid?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;

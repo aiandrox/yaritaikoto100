@@ -1,6 +1,7 @@
 query CurrentListQuery {
   currentList {
     uuid
+    title
     published
     items {
       number

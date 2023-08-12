@@ -1,1 +1,1 @@
-export { Page as YaritaikotoListPage } from "./page.component";
+export { PageComponent as YaritaikotoListPage } from "./page.component";
