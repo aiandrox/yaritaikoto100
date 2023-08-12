@@ -13,10 +13,15 @@ export default function List({
       __typename?: "Item" | undefined;
       number: number;
       name: string;
-      doneAt?: any;
+      doneAt?: string | null;
     }[];
   };
 }) {
+  const viewItems = Array.from({ length: 100 }, (_, i) => {
+    const item = currentList?.items.find((item) => item.number === i + 1);
+    return item || { number: i + 1, name: "", doneAt: null };
+  });
+
   return (
     <>
       <div className="flex items-center my-4">
@@ -38,7 +43,7 @@ export default function List({
       </div>
 
       <div className="flex flex-col w-full items-center justify-center">
-        {currentList && currentList.items.map((item) => <Row key={item.number} item={item} />)}
+        {currentList && viewItems.map((item) => <Row key={item.number} item={item} />)}
       </div>
     </>
   );
