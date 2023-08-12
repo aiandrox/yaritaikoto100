@@ -1,0 +1,11 @@
+query CurrentListQuery {
+  currentList {
+    uuid
+    published
+    items {
+      number
+      name
+      doneAt
+    }
+  }
+}
