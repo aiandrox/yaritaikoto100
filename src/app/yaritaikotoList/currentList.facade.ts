@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useCurrentListQueryQuery } from "../../graphql/currentList.query.generated";
+import { useCurrentListQueryQuery } from "./graphql/currentList.query.generated";
 
 export const useCurrentListFacade = () => {
   const {
