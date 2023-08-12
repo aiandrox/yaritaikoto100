@@ -3,7 +3,13 @@
 import { useState } from "react";
 import { Item } from "./models";
 
-export default function RowComponent({ item }: { item: Item }) {
+export default function RowComponent({
+  item,
+  onChangeName,
+}: {
+  item: Item;
+  onChangeName?: (e: any, number: number) => void;
+}) {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
@@ -33,6 +39,7 @@ export default function RowComponent({ item }: { item: Item }) {
         <input
           type="text"
           className="w-full p-2 text-gray-700 rounded-md focus:outline-none"
+          onChange={(e) => onChangeName && onChangeName(e, item.number)}
           maxLength={22}
           defaultValue={item.name}
         />
