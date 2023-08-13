@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { redirect } from "next/navigation";
 import { useCallbackFacade } from "./callbacks.facade";
 import { useMemo } from "react";
 import useLocalStorage from "@/utils/localStorage";
@@ -14,6 +16,5 @@ export default function Callbacks() {
 
   handleCreateList(localStorageItems);
 
-  const router = useRouter();
-  router.push("/");
+  redirect("/");
 }
