@@ -1,4 +1,4 @@
-query CurrentListQuery {
+query CurrentList {
   currentList {
     uuid
     title

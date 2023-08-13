@@ -7,11 +7,11 @@ import LocalStorageListComponent from "./localStorageList.component";
 import useLocalStorage from "@/utils/localStorage";
 
 export const PageComponent = () => {
-  const { currentList } = useYaritaikotoListFacade();
+  const { currentUser, currentList } = useYaritaikotoListFacade();
   const { value: localStorageItemsValue, setValueAndStorage: setLocalStorageItems } =
     useLocalStorage("items");
 
-  if (currentList) {
+  if (currentUser && currentList) {
     const items: Item[] = Array.from({ length: 100 }, (_, i) => {
       const item = currentList?.items.find((item) => item.number === i + 1);
       return item || { number: i + 1, name: "", doneAt: null };

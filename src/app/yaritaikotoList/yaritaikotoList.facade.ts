@@ -1,13 +1,20 @@
 import { useMemo } from "react";
-import { useCurrentListQueryQuery } from "./graphql/currentList.query.generated";
+import { useCurrentListQuery } from "./graphql/currentList.query.generated";
+import { useCurrentUserQuery } from "./graphql/currentUser.query.generated";
 
 export const useYaritaikotoListFacade = () => {
-  const { data: currentListData } = useCurrentListQueryQuery({
+  const { data: currentUserData } = useCurrentUserQuery({
+    variables: {},
+  });
+  const currentUser = useMemo(() => currentUserData?.currentUser, [currentUserData]);
+
+  const { data: currentListData } = useCurrentListQuery({
     variables: {},
   });
   const currentList = useMemo(() => currentListData?.currentList, [currentListData]);
 
   return {
-    currentList: currentList,
+    currentUser,
+    currentList,
   } as const;
 };
