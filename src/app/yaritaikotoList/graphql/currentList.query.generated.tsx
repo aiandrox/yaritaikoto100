@@ -1,28 +1,35 @@
-import * as Types from '../../__generated__/graphql';
+import * as Types from "../../__generated__/graphql";
 
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { gql } from "@apollo/client";
+import * as Apollo from "@apollo/client";
 const defaultOptions = {} as const;
-export type CurrentListQueryQueryVariables = Types.Exact<{ [key: string]: never; }>;
+export type CurrentListQueryQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-
-export type CurrentListQueryQuery = { __typename?: 'Query', currentList?: { __typename?: 'List', uuid: string, title: string, published: boolean, items: Array<{ __typename?: 'Item', number: number, name: string, doneAt?: string | null }> } | null };
-
+export type CurrentListQueryQuery = {
+  __typename?: "Query";
+  currentList?: {
+    __typename?: "List";
+    uuid: string;
+    title: string;
+    published: boolean;
+    items: Array<{ __typename?: "Item"; number: number; name: string; doneAt?: string | null }>;
+  } | null;
+};
 
 export const CurrentListQueryDocument = gql`
-    query CurrentListQuery {
-  currentList {
-    uuid
-    title
-    published
-    items {
-      number
-      name
-      doneAt
+  query CurrentListQuery {
+    currentList {
+      uuid
+      title
+      published
+      items {
+        number
+        name
+        doneAt
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useCurrentListQueryQuery__
@@ -39,14 +46,27 @@ export const CurrentListQueryDocument = gql`
  *   },
  * });
  */
-export function useCurrentListQueryQuery(baseOptions?: Apollo.QueryHookOptions<CurrentListQueryQuery, CurrentListQueryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CurrentListQueryQuery, CurrentListQueryQueryVariables>(CurrentListQueryDocument, options);
-      }
-export function useCurrentListQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentListQueryQuery, CurrentListQueryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CurrentListQueryQuery, CurrentListQueryQueryVariables>(CurrentListQueryDocument, options);
-        }
+export function useCurrentListQueryQuery(
+  baseOptions?: Apollo.QueryHookOptions<CurrentListQueryQuery, CurrentListQueryQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CurrentListQueryQuery, CurrentListQueryQueryVariables>(
+    CurrentListQueryDocument,
+    options
+  );
+}
+export function useCurrentListQueryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CurrentListQueryQuery, CurrentListQueryQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CurrentListQueryQuery, CurrentListQueryQueryVariables>(
+    CurrentListQueryDocument,
+    options
+  );
+}
 export type CurrentListQueryQueryHookResult = ReturnType<typeof useCurrentListQueryQuery>;
 export type CurrentListQueryLazyQueryHookResult = ReturnType<typeof useCurrentListQueryLazyQuery>;
-export type CurrentListQueryQueryResult = Apollo.QueryResult<CurrentListQueryQuery, CurrentListQueryQueryVariables>;
+export type CurrentListQueryQueryResult = Apollo.QueryResult<
+  CurrentListQueryQuery,
+  CurrentListQueryQueryVariables
+>;

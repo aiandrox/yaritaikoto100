@@ -1,6 +1,0 @@
-mutation CreateAnonymousUser($input: CreateAnonymousUserInput!) {
-  createAnonymousUser(input: $input) {
-    id
-    uuid
-  }
-}
