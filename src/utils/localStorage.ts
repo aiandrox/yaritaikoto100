@@ -8,7 +8,7 @@ export default function useLocalStorage(key: string) {
     if (res) {
       setValue(res);
     }
-  }, []);
+  }, [key]);
 
   const setValueAndStorage = (newValue: string) => {
     localStorage.setItem(key, newValue);

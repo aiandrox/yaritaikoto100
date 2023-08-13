@@ -8,7 +8,7 @@ export type CreateListMutationVariables = Types.Exact<{
 }>;
 
 
-export type CreateListMutation = { __typename?: 'Mutation', createList?: { __typename?: 'CreateListPayload', list: { __typename?: 'List', uuid: string, published: boolean } } | null };
+export type CreateListMutation = { __typename?: 'Mutation', createList?: { __typename?: 'CreateListPayload', list: { __typename?: 'List', uuid: string } } | null };
 
 
 export const CreateListDocument = gql`
@@ -16,7 +16,6 @@ export const CreateListDocument = gql`
   createList(input: $input) {
     list {
       uuid
-      published
     }
   }
 }

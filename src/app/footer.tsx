@@ -12,7 +12,7 @@ export default function Footer() {
           </li>
           <li>
             <a
-              href="http://localhost:3000/auth/google_oauth2"
+              href="https://localhost:3000/auth/google_oauth2"
               className="mr-4 hover:underline md:mr-6"
             >
               Googleログイン
