@@ -1,34 +1,27 @@
-import * as Types from "../../__generated__/graphql";
+import * as Types from '../../__generated__/graphql';
 
-import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
 export type CreateListMutationVariables = Types.Exact<{
   input: Types.CreateListInput;
 }>;
 
-export type CreateListMutation = {
-  __typename?: "Mutation";
-  createList?: {
-    __typename?: "CreateListPayload";
-    list: { __typename?: "List"; uuid: string; published: boolean };
-  } | null;
-};
+
+export type CreateListMutation = { __typename?: 'Mutation', createList?: { __typename?: 'CreateListPayload', list: { __typename?: 'List', uuid: string, published: boolean } } | null };
+
 
 export const CreateListDocument = gql`
-  mutation CreateList($input: CreateListInput!) {
-    createList(input: $input) {
-      list {
-        uuid
-        published
-      }
+    mutation CreateList($input: CreateListInput!) {
+  createList(input: $input) {
+    list {
+      uuid
+      published
     }
   }
-`;
-export type CreateListMutationFn = Apollo.MutationFunction<
-  CreateListMutation,
-  CreateListMutationVariables
->;
+}
+    `;
+export type CreateListMutationFn = Apollo.MutationFunction<CreateListMutation, CreateListMutationVariables>;
 
 /**
  * __useCreateListMutation__
@@ -47,18 +40,10 @@ export type CreateListMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCreateListMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateListMutation, CreateListMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateListMutation, CreateListMutationVariables>(
-    CreateListDocument,
-    options
-  );
-}
+export function useCreateListMutation(baseOptions?: Apollo.MutationHookOptions<CreateListMutation, CreateListMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateListMutation, CreateListMutationVariables>(CreateListDocument, options);
+      }
 export type CreateListMutationHookResult = ReturnType<typeof useCreateListMutation>;
 export type CreateListMutationResult = Apollo.MutationResult<CreateListMutation>;
-export type CreateListMutationOptions = Apollo.BaseMutationOptions<
-  CreateListMutation,
-  CreateListMutationVariables
->;
+export type CreateListMutationOptions = Apollo.BaseMutationOptions<CreateListMutation, CreateListMutationVariables>;

@@ -1,8 +1,13 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // SSL証明書の検証を無効にする
+
 import type { CodegenConfig } from "@graphql-codegen/cli";
+
+import dns from "node:dns";
+dns.setDefaultResultOrder("ipv4first");
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "http://localhost:3000/graphql/enterprise",
+  schema: { "https://localhost:3000/graphql/enterprise": {} },
   documents: ["src/**/*.graphql"],
   generates: {
     "src/app/__generated__/graphql.ts": {
