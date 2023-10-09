@@ -1,20 +1,11 @@
-"use client";
+import { cookies } from "next/headers";
 
 import { redirect } from "next/navigation";
 import { useCallbackFacade } from "./callbacks.facade";
-import { useMemo } from "react";
-import useLocalStorage from "@/utils/localStorage";
 
-export default function Callbacks() {
-  const { value: localStorageItemsValue } = useLocalStorage("items");
-  const localStorageItems = useMemo(
-    () => (localStorageItemsValue ? JSON.parse(localStorageItemsValue) : []),
-    [localStorageItemsValue]
-  );
-
-  const { handleCreateList } = useCallbackFacade();
-
-  handleCreateList(localStorageItems);
-
+export default async function handler() {
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get("access_token");
+  console.log(accessToken);
   redirect("/");
 }
